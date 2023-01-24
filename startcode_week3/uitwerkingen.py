@@ -39,7 +39,7 @@ def build_model():
     # Het staat je natuurlijk vrij om met andere settings en architecturen te experimenteren.
 
     img_size = 28
-    img_pixels = 28**2
+    img_pixels = img_size ** 2
     model = keras.Sequential([
         layers.Dense(img_pixels, input_shape=(img_size, img_size)),  # Laag 1
         layers.Flatten(),
