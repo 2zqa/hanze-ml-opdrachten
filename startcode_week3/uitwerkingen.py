@@ -79,7 +79,18 @@ def conf_els(conf, labels):
     # https://numpy.org/doc/stable/reference/generated/numpy.diagonal.html
 
     # YOUR CODE HERE
-    pass
+    return_values = []
+    tp_list = np.diagonal(conf)
+    label_count = len(labels)
+    for i in range(label_count):
+        tp = tp_list[i]
+        fp = np.sum(conf[:, i]) - tp
+        fn = np.sum(conf[i]) - tp
+        tn = np.sum(conf) - tp - fp - fn
+        return_values.append((labels[i], tp, fp, fn, tn))
+
+    return return_values
+
 
 # OPGAVE 2c
 def conf_data(metrics):
