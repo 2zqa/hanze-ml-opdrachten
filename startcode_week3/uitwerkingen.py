@@ -99,15 +99,21 @@ def conf_data(metrics):
     # bepaal vervolgens de metrieken die in de opgave genoemd zijn. Retourneer deze waarden in de
     # vorm van een dictionary (de scaffold hiervan is gegeven).
 
-    # VERVANG ONDERSTAANDE REGELS MET JE EIGEN CODE
-    
-    tp = 1
-    fp = 1
-    fn = 1
-    tn = 1
+    tp = 0
+    fp = 0
+    fn = 0
+    tn = 0
 
-    # BEREKEN HIERONDER DE JUISTE METRIEKEN EN RETOURNEER DIE 
-    # ALS EEN DICTIONARY
+    for item in metrics:
+        tp += item[1]
+        fp += item[2]
+        fn += item[3]
+        tn += item[4]
 
-    rv = {'tpr': 0, 'ppv': 0, 'tnr': 0, 'fpr': 0}
+    tpr = tp / (tp + fn)
+    ppv = tp / (tp + fp)
+    tnr = tn / (tn + fp)
+    fpr = fp / (fp + tn)
+
+    rv = {'tpr': tpr, 'ppv': ppv, 'tnr': tnr, 'fpr': fpr}
     return rv
